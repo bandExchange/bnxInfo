@@ -172,23 +172,23 @@
     }
 
     .container {
-      max-width: 300px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 60px 24px 8px;
+      padding: 36px 24px 8px;
     }
 
     .header {
       display: flex;
       justify-content: center;
-      margin-bottom: 64px;
+      margin-bottom: 36px;
     }
 
     .slide-2 .header {
-      margin-bottom: 32px;
+      margin-bottom: 20px;
     }
 
     .header img {
-      max-width: 140px;
+      max-width: 168px;
       width: 100%;
       height: auto;
     }
@@ -204,14 +204,14 @@
     .sections {
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 16px;
     }
 
     .glass-card {
       display: flex;
       align-items: center;
-      gap: 32px;
-      padding: 28px 32px;
+      gap: 24px;
+      padding: 16px 32px;
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
       border-radius: 20px;
@@ -253,7 +253,7 @@
       font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
       color: var(--text-title);
       transition: color 0.4s ease;
     }
@@ -261,7 +261,7 @@
     .glass-card__desc {
       font-size: 0.8rem;
       color: var(--text-desc);
-      line-height: 1.7;
+      line-height: 1.5;
       transition: color 0.4s ease;
     }
 
@@ -270,14 +270,14 @@
       font-size: 1.25rem;
       font-weight: 700;
       color: var(--text-title);
-      margin-bottom: 32px;
+      margin-bottom: 20px;
       letter-spacing: -0.02em;
     }
 
     .info-image-wrap {
       display: flex;
       justify-content: center;
-      margin-bottom: 32px;
+      margin-bottom: 20px;
     }
 
     .info-image-wrap img {
@@ -308,20 +308,20 @@
     }
 
     .nav-btn {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 1px solid var(--arrow-border);
-      background: var(--arrow-bg);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      width: auto;
+      height: auto;
+      padding: 8px;
+      border: none;
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       color: var(--arrow-color);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.2s ease, background 0.3s ease, opacity 0.3s ease;
-      box-shadow: 0 4px 16px var(--glass-shadow);
+      transition: transform 0.2s ease, opacity 0.3s ease;
+      box-shadow: none;
     }
 
     .nav-btn:hover {
@@ -335,8 +335,8 @@
     }
 
     .nav-btn svg {
-      width: 22px;
-      height: 22px;
+      width: 28px;
+      height: 28px;
       fill: none;
       stroke: currentColor;
       stroke-width: 2;
@@ -346,26 +346,26 @@
 
     @media (max-width: 600px) {
       .container {
-        padding: 40px 16px 4px;
+        padding: 28px 16px 4px;
       }
 
       .header {
-        margin-bottom: 40px;
-      }
-
-      .slide-2 .header {
         margin-bottom: 24px;
       }
 
+      .slide-2 .header {
+        margin-bottom: 16px;
+      }
+
       .header img {
-        max-width: 82px;
+        max-width: 96px;
       }
 
       .glass-card {
         flex-direction: column;
         align-items: flex-start;
-        gap: 20px;
-        padding: 24px;
+        gap: 12px;
+        padding: 14px 20px;
       }
 
       .glass-card__image {
@@ -382,7 +382,7 @@
 
       .info-heading {
         font-size: 1.05rem;
-        margin-bottom: 24px;
+        margin-bottom: 16px;
       }
 
       .info-disclaimer {
@@ -394,8 +394,7 @@
       }
 
       .nav-btn {
-        width: 44px;
-        height: 44px;
+        padding: 6px;
       }
     }
   </style>
