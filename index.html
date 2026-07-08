@@ -127,34 +127,51 @@
     .screen-1 .glass-card:nth-child(2) { animation-delay: 0.35s; }
     .screen-1 .glass-card:nth-child(3) { animation-delay: 0.5s; }
 
-    .screen-2 .reveal {
+    .screen-2 .reveal,
+    .screen-3 .reveal {
       opacity: 0;
       transform: translateY(32px);
       transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
                   transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .screen-2.visible .reveal:nth-child(1) {
+    .screen-2.visible .reveal:nth-child(1),
+    .screen-3.visible .reveal:nth-child(1) {
       opacity: 1;
       transform: translateY(0);
       transition-delay: 0.1s;
     }
 
-    .screen-2.visible .reveal:nth-child(2) {
+    .screen-2.visible .reveal:nth-child(2),
+    .screen-3.visible .reveal:nth-child(2) {
       opacity: 1;
       transform: translateY(0);
       transition-delay: 0.25s;
     }
 
-    .screen-2.visible .reveal:nth-child(3) {
+    .screen-2.visible .reveal:nth-child(3),
+    .screen-3.visible .reveal:nth-child(3) {
       opacity: 1;
       transform: translateY(0);
       transition-delay: 0.4s;
     }
 
+    .screen-3.visible .reveal:nth-child(4) {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.55s;
+    }
+
+    .screen-3.visible .reveal:nth-child(5) {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.7s;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .animate-in,
-      .screen-2 .reveal {
+      .screen-2 .reveal,
+      .screen-3 .reveal {
         opacity: 1;
         animation: none;
         transform: none;
@@ -163,13 +180,53 @@
     }
 
     .page-heading,
-    .info-heading {
+    .info-heading,
+    .event-heading {
       text-align: center;
       font-size: 1.25rem;
       font-weight: 700;
       color: var(--text-title);
       margin-bottom: 24px;
       letter-spacing: -0.02em;
+    }
+
+    .event-heading {
+      margin-bottom: 8px;
+    }
+
+    .event-subtitle {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-desc);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .event-image-link {
+      display: block;
+      max-width: 480px;
+      margin: 0 auto 12px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px var(--glass-shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .event-image-link:hover {
+      transform: scale(1.02);
+      box-shadow: 0 16px 48px var(--glass-shadow-hover);
+    }
+
+    .event-image-link img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .event-link-hint {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-sub);
     }
 
     .sections {
@@ -308,8 +365,18 @@
       }
 
       .page-heading,
-      .info-heading {
+      .info-heading,
+      .event-heading {
         font-size: 1.05rem;
+        margin-bottom: 16px;
+      }
+
+      .event-heading {
+        margin-bottom: 6px;
+      }
+
+      .event-subtitle {
+        font-size: 0.8rem;
         margin-bottom: 16px;
       }
 
@@ -393,6 +460,20 @@
         <p class="info-disclaimer reveal">개발 중인 화면이며, 최종 릴리즈 시 변경될 수 있습니다.</p>
       </div>
     </section>
+
+    <section class="screen screen-3" id="screen3">
+      <div class="container">
+        <h2 class="event-heading reveal">선공개 이벤트</h2>
+
+        <p class="event-subtitle reveal">피드용 이미지 틀 생성기입니다. 개장 전 자유롭게 이용해 보세요!</p>
+
+        <a class="event-image-link reveal" href="https://bandexchange.github.io/createImage/" target="_blank" rel="noopener noreferrer">
+          <img src="cardImage.png" alt="피드용 이미지 틀 생성기">
+        </a>
+
+        <p class="event-link-hint reveal">사진 클릭 시 이동</p>
+      </div>
+    </section>
   </main>
 
   <div class="scroll-hint" id="scrollHint">
@@ -403,17 +484,21 @@
   <script>
     const scrollContainer = document.getElementById('scrollContainer');
     const screen2 = document.getElementById('screen2');
+    const screen3 = document.getElementById('screen3');
     const scrollHint = document.getElementById('scrollHint');
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          screen2.classList.add('visible');
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
       },
       { threshold: 0.3 }
     );
     observer.observe(screen2);
+    observer.observe(screen3);
 
     scrollContainer.addEventListener('scroll', () => {
       scrollHint.classList.toggle('hidden', scrollContainer.scrollTop > 50);
