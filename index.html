@@ -168,6 +168,12 @@
       transition-delay: 0.7s;
     }
 
+    .screen-3.visible .reveal:nth-child(6) {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.85s;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .animate-in,
       .screen-2 .reveal,
@@ -227,6 +233,40 @@
       text-align: center;
       font-size: 0.75rem;
       color: var(--text-sub);
+    }
+
+    .community-btn-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 28px;
+    }
+
+    .community-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-title);
+      text-decoration: none;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow:
+        0 8px 32px var(--glass-shadow),
+        inset 0 1px 0 var(--glass-inset);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    .community-btn:hover {
+      border-color: var(--glass-border-hover);
+      box-shadow:
+        0 12px 40px var(--glass-shadow-hover),
+        inset 0 1px 0 var(--glass-inset-hover);
+      transform: translateY(-1px);
     }
 
     .sections {
@@ -380,6 +420,15 @@
         margin-bottom: 16px;
       }
 
+      .community-btn {
+        font-size: 0.8rem;
+        padding: 10px 22px;
+      }
+
+      .community-btn-wrap {
+        margin-top: 20px;
+      }
+
       .glass-card {
         flex-direction: column;
         align-items: flex-start;
@@ -472,6 +521,10 @@
         </a>
 
         <p class="event-link-hint reveal">사진 클릭 시 이동</p>
+
+        <div class="community-btn-wrap reveal">
+          <a class="community-btn" href="https://band.us/n/a3a4b6Aao8ufl" target="_blank" rel="noopener noreferrer">커뮤니티로 이동하기</a>
+        </div>
       </div>
     </section>
   </main>
