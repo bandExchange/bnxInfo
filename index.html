@@ -460,7 +460,7 @@
   </header>
 
   <main class="scroll-container" id="scrollContainer">
-    <section class="screen screen-1">
+    <section class="screen screen-1" id="screen1">
       <div class="container">
         <h2 class="page-heading animate-in">BNX 단독 상장주 소개</h2>
 
@@ -536,9 +536,11 @@
 
   <script>
     const scrollContainer = document.getElementById('scrollContainer');
+    const screens = document.querySelectorAll('.screen');
     const screen2 = document.getElementById('screen2');
     const screen3 = document.getElementById('screen3');
     const scrollHint = document.getElementById('scrollHint');
+    let activeScreen = 0;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -553,9 +555,18 @@
     observer.observe(screen2);
     observer.observe(screen3);
 
-    scrollContainer.addEventListener('scroll', () => {
-      scrollHint.classList.toggle('hidden', scrollContainer.scrollTop > 50);
-    }, { passive: true });
+    const hintObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            activeScreen = [...screens].indexOf(entry.target);
+          }
+        });
+        scrollHint.classList.toggle('hidden', activeScreen >= 2);
+      },
+      { root: scrollContainer, threshold: 0.5 }
+    );
+    screens.forEach((screen) => hintObserver.observe(screen));
   </script>
 </body>
 </html>
