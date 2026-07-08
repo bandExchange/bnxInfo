@@ -122,53 +122,56 @@
       animation: slideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
-    .screen-1 .page-heading { animation-delay: 0.1s; }
-    .screen-1 .glass-card:nth-child(1) { animation-delay: 0.2s; }
-    .screen-1 .glass-card:nth-child(2) { animation-delay: 0.35s; }
-    .screen-1 .glass-card:nth-child(3) { animation-delay: 0.5s; }
+    .screen-1 .band-heading { animation-delay: 0.1s; }
+    .screen-1 .band-rules { animation-delay: 0.25s; }
 
-    .screen-2 .reveal,
-    .screen-3 .reveal {
+    .screen-2 .page-heading { animation-delay: 0.1s; }
+    .screen-2 .glass-card:nth-child(1) { animation-delay: 0.2s; }
+    .screen-2 .glass-card:nth-child(2) { animation-delay: 0.35s; }
+    .screen-2 .glass-card:nth-child(3) { animation-delay: 0.5s; }
+
+    .screen-3 .reveal,
+    .screen-4 .reveal {
       opacity: 0;
       transform: translateY(32px);
       transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
                   transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .screen-2.visible .reveal:nth-child(1),
-    .screen-3.visible .reveal:nth-child(1) {
+    .screen-3.visible .reveal:nth-child(1),
+    .screen-4.visible .reveal:nth-child(1) {
       opacity: 1;
       transform: translateY(0);
       transition-delay: 0.1s;
     }
 
-    .screen-2.visible .reveal:nth-child(2),
-    .screen-3.visible .reveal:nth-child(2) {
+    .screen-3.visible .reveal:nth-child(2),
+    .screen-4.visible .reveal:nth-child(2) {
       opacity: 1;
       transform: translateY(0);
       transition-delay: 0.25s;
     }
 
-    .screen-2.visible .reveal:nth-child(3),
-    .screen-3.visible .reveal:nth-child(3) {
+    .screen-3.visible .reveal:nth-child(3),
+    .screen-4.visible .reveal:nth-child(3) {
       opacity: 1;
       transform: translateY(0);
       transition-delay: 0.4s;
     }
 
-    .screen-3.visible .reveal:nth-child(4) {
+    .screen-4.visible .reveal:nth-child(4) {
       opacity: 1;
       transform: translateY(0);
       transition-delay: 0.55s;
     }
 
-    .screen-3.visible .reveal:nth-child(5) {
+    .screen-4.visible .reveal:nth-child(5) {
       opacity: 1;
       transform: translateY(0);
       transition-delay: 0.7s;
     }
 
-    .screen-3.visible .reveal:nth-child(6) {
+    .screen-4.visible .reveal:nth-child(6) {
       opacity: 1;
       transform: translateY(0);
       transition-delay: 0.85s;
@@ -176,8 +179,8 @@
 
     @media (prefers-reduced-motion: reduce) {
       .animate-in,
-      .screen-2 .reveal,
-      .screen-3 .reveal {
+      .screen-3 .reveal,
+      .screen-4 .reveal {
         opacity: 1;
         animation: none;
         transform: none;
@@ -187,13 +190,24 @@
 
     .page-heading,
     .info-heading,
-    .event-heading {
+    .event-heading,
+    .band-heading {
       text-align: center;
       font-size: 1.25rem;
       font-weight: 700;
       color: var(--text-title);
       margin-bottom: 24px;
       letter-spacing: -0.02em;
+    }
+
+    .band-rules {
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--text-desc);
+      line-height: 1.8;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .event-heading {
@@ -406,9 +420,15 @@
 
       .page-heading,
       .info-heading,
-      .event-heading {
+      .event-heading,
+      .band-heading {
         font-size: 1.05rem;
         margin-bottom: 16px;
+      }
+
+      .band-rules {
+        font-size: 0.9rem;
+        gap: 8px;
       }
 
       .event-heading {
@@ -462,6 +482,20 @@
   <main class="scroll-container" id="scrollContainer">
     <section class="screen screen-1" id="screen1">
       <div class="container">
+        <h2 class="band-heading animate-in">2D ALL 1:1 ASK BAND</h2>
+
+        <div class="band-rules animate-in">
+          <p>15일 단기 증권사 테마 밴드</p>
+          <p>반·완캐입 지향 및 맞춤법, 문장 부호 준수</p>
+          <p>프로필은 공식 일러스트 or 단색으로만 설정</p>
+          <p>내부지 외 페어 프로필 및 닉네임 설정 금지</p>
+          <p>모든 문의 사항은 운영진 1:1로</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen screen-2" id="screen2">
+      <div class="container">
         <h2 class="page-heading animate-in">BNX 단독 상장주 소개</h2>
 
         <div class="sections">
@@ -498,7 +532,7 @@
       </div>
     </section>
 
-    <section class="screen screen-2" id="screen2">
+    <section class="screen screen-3" id="screen3">
       <div class="container">
         <h2 class="info-heading reveal">BNX 자체 개발 웹 서비스 출시 예정</h2>
 
@@ -510,7 +544,7 @@
       </div>
     </section>
 
-    <section class="screen screen-3" id="screen3">
+    <section class="screen screen-4" id="screen4">
       <div class="container">
         <h2 class="event-heading reveal">선공개 이벤트</h2>
 
@@ -537,8 +571,8 @@
   <script>
     const scrollContainer = document.getElementById('scrollContainer');
     const screens = document.querySelectorAll('.screen');
-    const screen2 = document.getElementById('screen2');
     const screen3 = document.getElementById('screen3');
+    const screen4 = document.getElementById('screen4');
     const scrollHint = document.getElementById('scrollHint');
     let activeScreen = 0;
 
@@ -552,8 +586,8 @@
       },
       { threshold: 0.3 }
     );
-    observer.observe(screen2);
     observer.observe(screen3);
+    observer.observe(screen4);
 
     const hintObserver = new IntersectionObserver(
       (entries) => {
@@ -562,7 +596,7 @@
             activeScreen = [...screens].indexOf(entry.target);
           }
         });
-        scrollHint.classList.toggle('hidden', activeScreen >= 2);
+        scrollHint.classList.toggle('hidden', activeScreen >= 3);
       },
       { root: scrollContainer, threshold: 0.5 }
     );
